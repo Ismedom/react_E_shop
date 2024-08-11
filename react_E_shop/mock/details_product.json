@@ -1,0 +1,29 @@
+[
+  {
+    "id": 235,
+    "name": "4K Ultra HD Smart TV",
+    "price": 499.99,
+    "description": "Experience stunning visuals with this 55-inch 4K Ultra HD Smart TV, featuring HDR support and voice control.",
+    "type": "electronics",
+    "imageUrl": "https://example.com/images/4k-smart-tv.jpg",
+    "stock": 50,
+    "ratings": 4.7,
+    "reviews": [
+      {
+        "id": 1,
+        "userId": 101,
+        "rating": 5
+      },
+      {
+        "id": 2,
+        "userId": 102,
+        "rating": 4
+      },
+      {
+        "id": 3,
+        "userId": 103,
+        "rating": 5
+      }
+    ]
+  }
+]

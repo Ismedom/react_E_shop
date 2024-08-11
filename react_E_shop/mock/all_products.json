@@ -1,0 +1,31 @@
+{
+  "products": [
+    {
+      "id": 232,
+      "name": "Wireless Headphones",
+      "price": 99.99,
+      "description": "High-quality wireless headphones with noise-cancellation and long battery life.",
+      "type": "electronics",
+      "imageUrl": "https://example.com/images/wireless-headphones.jpg"
+    },
+    {
+      "id": 233,
+      "name": "Running Shoes",
+      "price": 79.99,
+      "description": "Comfortable and durable running shoes suitable for all terrains.",
+      "type": "footwear",
+      "imageUrl": "https://example.com/images/running-shoes.jpg"
+    },
+    {
+      "id": 234,
+      "name": "Smartwatch",
+      "price": 199.99,
+      "description": "Feature-packed smartwatch with fitness tracking, heart rate monitoring, and notifications.",
+      "type": "electronics",
+      "imageUrl": "https://example.com/images/smartwatch.jpg"
+    }
+  ],
+
+  "totalPages": 1,
+  "currentPage": 1
+}
