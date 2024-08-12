@@ -9,7 +9,6 @@ const generateApiKey = async (req, res) => {
     lastUsed: null,
   });
   await newApiKey.save().then(() => console.log("save success"));
-
   res.json({ apiKey: newApiKey.key });
 };
 
