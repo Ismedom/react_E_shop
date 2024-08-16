@@ -12,7 +12,9 @@ const productSchema = new mongoose.Schema({
   description: String,
   type: String,
   imageUrl: String,
+  stock: Number,
+  ratings: Number,
 });
 
-const product = mongoose.model("product", productSchema);
+const product = mongoose.model("products", productSchema);
 module.exports = product;
