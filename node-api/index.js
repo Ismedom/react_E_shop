@@ -1,14 +1,26 @@
+//
+
 const express = require("express");
 const app = express();
+const cors = require("cors");
 require("dotenv").config();
 const connect = require("./utils/connect_DB");
 const apiKeysRouter = require("./routes/generateApiKey.route");
-const productDetailsRouter = require("./routes/product_detail.route");
+const GetproductDetailsRouter = require("./routes/Getproduct_detail.route");
+const GetProductRouter = require("./routes/GetProducts.route");
+const PostProductRouter = require("./routes/PostProduct.route");
+const bodyParser = require("body-parser");
 
-//
+app.use(cors());
+app.use(express.json());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
 connect();
 app.use(apiKeysRouter);
-app.use(productDetailsRouter);
+app.use(GetproductDetailsRouter);
+app.use(GetProductRouter);
+app.use(PostProductRouter);
 
 app.listen(process.env.PORT, () => {
   console.log("http://localhost:" + process.env.PORT);
