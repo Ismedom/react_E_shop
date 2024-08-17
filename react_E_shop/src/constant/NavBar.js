@@ -1,3 +1,4 @@
+//
 const NavBarData = [
   {
     path: "/",

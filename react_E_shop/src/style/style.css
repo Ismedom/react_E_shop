@@ -1,0 +1,21 @@
+.nav-bar {
+  max-width: 80%;
+  margin: 0 auto;
+}
+.nav-bar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 0;
+}
+.nav-bar-items {
+  display: flex;
+  gap: 1rem;
+}
+a.nav-bar-link {
+  font-size: 18px;
+}
+
+a.nav-bar-link.active {
+  color: #9b9b9b;
+}
