@@ -1,18 +1,22 @@
+//
+
 const mongoose = require("mongoose");
 
 const ratingSchema = new mongoose.Schema({
   id: {
     type: Number,
     required: true,
-    unique: true,
   },
   userId: {
     type: Number,
     required: true,
-    unique: true,
   },
-  rating: Number,
+  rating: {
+    required: true,
+    type: Number,
+  },
 });
 
-const rating = mongoose.model("rating", ratingSchema);
-module.exports = rating;
+const ratings = mongoose.model("rating", ratingSchema);
+
+module.exports = ratings;

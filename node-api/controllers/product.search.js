@@ -11,7 +11,7 @@ const productSearchByDes = async (req, res) => {
 //
 const productSearchById = async (req, res) => {
   const id = req.body.id;
-  const productFoundById = await product.findById({ id });
+  const productFoundById = await product.findOne({ id });
   return res.json(productFoundById);
 };
 //
