@@ -13,7 +13,7 @@ const productDetails = async (req, res) => {
     const productInfor = await product.findOne({ id });
     //
     if (!productInfor) return res.status(404).json({ message: "Product not found" });
-    if (!(ratingArr.length > 0)) return res.json({ information: "cannot found any data, " });
+    if (!(ratingArr.length > 0)) return res.json({ information: "cannot found any data" });
 
     //
     const totalStaring = ratingArr.reduce((accumulator, item) => {
