@@ -3,7 +3,6 @@ const product = require("../models/product");
 const rating = require("../models/rating");
 
 const productDetails = async (req, res) => {
-  let averageStaring = 0;
   try {
     const id = 12;
 
@@ -16,15 +15,8 @@ const productDetails = async (req, res) => {
     if (!(ratingArr.length > 0)) return res.json({ information: "cannot found any data" });
 
     //
-    const totalStaring = ratingArr.reduce((accumulator, item) => {
-      return accumulator + item.rating;
-    }, 0);
-    averageStaring = totalStaring / ratingArr.length;
-
-    //
     const productDetailsInformation = {
       ...productInfor.toObject(),
-      ratings: averageStaring,
       ratingCount: ratingArr.length,
       reviews: ratingArr,
     };

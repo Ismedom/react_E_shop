@@ -11,8 +11,12 @@ const ratingSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
-  rating: Number,
+  rating: {
+    required: true,
+    type: Number,
+  },
 });
 
 const ratings = mongoose.model("rating", ratingSchema);
+
 module.exports = ratings;
