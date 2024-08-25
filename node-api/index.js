@@ -11,6 +11,7 @@ const GetproductDetailsRouter = require("./routes/Getproduct_detail.route");
 const GetProductRouter = require("./routes/GetProducts.route");
 const PostProductRouter = require("./routes/PostProduct.route");
 const PostRatingRouter = require("./routes/PostRating.route");
+require("./utils/firebaseConfig");
 
 app.use(cors());
 app.use(express.json());
