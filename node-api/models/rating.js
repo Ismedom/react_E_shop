@@ -4,11 +4,11 @@ const mongoose = require("mongoose");
 
 const ratingSchema = new mongoose.Schema({
   id: {
-    type: Number,
+    type: String,
     required: true,
   },
   userId: {
-    type: Number,
+    type: String,
     required: true,
   },
   rating: {
