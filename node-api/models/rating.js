@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 
 const ratingSchema = new mongoose.Schema({
   id: {
-    type: String,
+    type: Number,
     required: true,
   },
   userId: {
