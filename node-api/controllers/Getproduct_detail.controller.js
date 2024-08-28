@@ -4,10 +4,8 @@ const rating = require("../models/rating");
 const admin = require("firebase-admin");
 
 const productDetails = async (req, res) => {
-  const { id } = req.qery;
+  const id = req.params.id;
   try {
-    // const id = 1;
-
     if (isNaN(id)) return res.status(400).json({ message: "Id must be number as expect" });
 
     const ratingArr = await rating.find({ id });
