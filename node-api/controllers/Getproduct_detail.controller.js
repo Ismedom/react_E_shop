@@ -2,18 +2,16 @@
 const product = require("../models/product");
 const rating = require("../models/rating");
 const admin = require("firebase-admin");
-const expirationDate = new Date();
-expirationDate.setDate(expirationDate.getDate() + 2);
 
 const productDetails = async (req, res) => {
+  const { id } = req.qery;
   try {
-    const id = 1;
+    // const id = 1;
 
     if (isNaN(id)) return res.status(400).json({ message: "Id must be number as expect" });
 
     const ratingArr = await rating.find({ id });
     const productInfor = await product.findOne({ id });
-    console.log(productInfor.imageUrl);
 
     //
     if (!productInfor) return res.status(404).json({ message: "Product not found" });
@@ -29,7 +27,7 @@ const productDetails = async (req, res) => {
 
     const [url] = await file.getSignedUrl({
       action: "read",
-      expires: expirationDate,
+      expires: Date.now() + 60 * 60 * 1000,
     });
 
     //

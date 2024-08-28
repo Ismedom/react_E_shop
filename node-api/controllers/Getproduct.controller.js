@@ -4,8 +4,6 @@ const admin = require("firebase-admin");
 const getProducts = async (req, res) => {
   const page = parseInt(req.query.page) || 1;
   const limit = parseInt(req.query.limit) || 10;
-  const expirationDate = new Date();
-  expirationDate.setDate(expirationDate.getDate() + 2);
 
   try {
     const bucket = admin.storage().bucket();
@@ -18,7 +16,7 @@ const getProducts = async (req, res) => {
         if (files.length > 0) {
           const [url] = await files[0].getSignedUrl({
             action: "read",
-            expires: expirationDate,
+            expires: Date.now() + 60 * 60 * 1000,
           });
           return { ...item.toObject(), imageUrl: url };
         }
