@@ -2,7 +2,7 @@ const Product = require("../models/product");
 const admin = require("firebase-admin");
 
 const getProducts = async (req, res) => {
-  const page = parseInt(req.query.page) || 1;
+  // const page = parseInt(req.query.page) || 1;
   const limit = parseInt(req.query.limit) || 10;
 
   try {
