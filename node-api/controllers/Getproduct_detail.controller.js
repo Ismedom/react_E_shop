@@ -2,8 +2,6 @@
 const product = require("../models/product");
 const rating = require("../models/rating");
 const admin = require("firebase-admin");
-const expirationDate = new Date();
-expirationDate.setDate(expirationDate.getDate() + 2);
 
 const productDetails = async (req, res) => {
   try {
@@ -29,7 +27,7 @@ const productDetails = async (req, res) => {
 
     const [url] = await file.getSignedUrl({
       action: "read",
-      expires: expirationDate,
+      expires: Date.now() + 60 * 60 * 1000,
     });
 
     //
