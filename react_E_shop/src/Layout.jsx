@@ -6,13 +6,13 @@ import "./style/style.css";
 
 const Layout = () => {
   return (
-    <>
+    <div style={{ padding: "1rem" }}>
       <NavBar />
       <div style={{ minHeight: "70vh" }}>
         <Outlet />
       </div>
       <Footer />
-    </>
+    </div>
   );
 };
 
