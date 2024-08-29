@@ -1,6 +1,11 @@
 version: 2
 updates:
   - package-ecosystem: "npm"
-    directory: "/"
+    directory: "/node-api"
+    schedule:
+      interval: "daily"
+
+  - package-ecosystem: "npm"
+    directory: "/react_E_shop"
     schedule:
       interval: "daily"
