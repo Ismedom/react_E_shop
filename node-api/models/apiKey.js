@@ -1,7 +1,10 @@
 //
 const mongoose = require("mongoose");
 const apiKeySchema = new mongoose.Schema({
-  key: String,
+  key: {
+    required: true,
+    type: String,
+  },
   createdAt: Date,
   lastUsed: Date,
 });
