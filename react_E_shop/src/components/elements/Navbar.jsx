@@ -5,7 +5,7 @@ import "../../style/style.css";
 
 const NavBar = () => {
   return (
-    <nav className="nav-bar">
+    <nav className="nav-bar" style={{ position: "sticky", top: "0" }}>
       <div className="nav-bar-container">
         <div style={{ fontSize: "18px" }}>logo</div>
         <div className="nav-bar-items">
