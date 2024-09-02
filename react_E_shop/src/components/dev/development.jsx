@@ -1,12 +1,10 @@
 import React from "react";
 
 const Development = () => {
-  return (
-    <div>
-      <pre>
-        {`// 
-
-
+    return (
+        <div>
+            <pre>
+                {`// 
 GET /products
 
 url: /products?page=2&limit=20
@@ -114,9 +112,9 @@ Response:
 ]
 "
       `}
-      </pre>
-    </div>
-  );
+            </pre>
+        </div>
+    );
 };
 
 export default Development;

@@ -1,5 +1,4 @@
 //
-
 const express = require("express");
 const Router = express.Router();
 const GetproductDetails = require("../controllers/Getproduct_detail.controller");
