@@ -13,6 +13,7 @@ const PostProductRouter = require("./routes/PostProduct.route");
 const PostRatingRouter = require("./routes/PostRating.route");
 const GreetingRoute = require("./routes/Greeting.route");
 const SearchingRouter = require("./routes/GetproductSearch.route");
+const DeleteProductRouter = require("./routes/DeleteProduct.route");
 require("./utils/firebaseConfig");
 
 app.use(cors());
@@ -28,6 +29,7 @@ app.use(GetProductRouter);
 app.use(PostProductRouter);
 app.use(PostRatingRouter);
 app.use(SearchingRouter);
+app.use(DeleteProductRouter);
 
 app.listen(process.env.PORT, () => {
     console.log("http://localhost:" + process.env.PORT);
