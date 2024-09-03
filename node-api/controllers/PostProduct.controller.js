@@ -6,11 +6,18 @@ const generateRandomString = require("../utils/generateId");
 
 const postProduct = async (req, res) => {
     const { name, price, description, type, stock, ratings } = req.body;
-    const id = generateRandomString(15);
+
+    if (!name || !price || req.file.originalFileName)
+        return res.json({ require: "name, price and other information!" });
+
+    const typeFomat = type.trim().toLowerCase();
+    const id = generateRandomString(10);
+    const originalFileName = `${uuidv4()}${path.extname(req.file.originalname)}`;
+
     try {
         if (!req.file) return res.status(400).send("No file uploaded.");
 
-        const blob = bucket.file(uuidv4() + path.extname(req.file.originalname));
+        const blob = bucket.file(originalFileName);
         const blobStream = blob.createWriteStream({
             metadata: {
                 contentType: req.file.mimetype,
@@ -34,16 +41,18 @@ const postProduct = async (req, res) => {
                     name,
                     price,
                     description,
-                    type,
-                    imageUrl: req.file.originalname,
+                    type: typeFomat,
+                    imageUrl: originalFileName,
                     stock,
                     ratings,
                 });
+
                 await item.save();
+
                 if (!item) return res.send({ error: "something when wrong!" });
-                //
+
                 const itemForFrontEnd = { ...item, imageUrl: url };
-                res.status(201 || 200).json(itemForFrontEnd);
+                res.status(201).json(itemForFrontEnd);
             } catch (error) {
                 res.status(500).send({ error: "Failed to save product or generate image URL." });
             }

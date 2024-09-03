@@ -3,17 +3,26 @@ const ratings = require("../models/rating");
 
 const PostRating = async (req, res) => {
     const { id, userId, rating } = req.body;
-    const ratingItem = new ratings({
-        id,
-        userId,
-        rating,
-    });
 
     try {
-        await ratingItem.save();
+        const productInfor = await product.findOne({ id });
+        if (!productInfor) return res.json({ message: "product not be found1" });
+        const existsUserRating = await ratings.findOneAndUpdate(
+            { id, userId },
+            { rating },
+            { new: true, upsert: false }
+        );
+
+        if (!existsUserRating) {
+            const ratingItem = new ratings({
+                id,
+                userId,
+                rating,
+            });
+            await ratingItem.save();
+        }
 
         const ratingArr = await ratings.find({ id });
-        const productInfor = await product.findOne({ id });
 
         if (!productInfor) return res.status(404).json({ message: "Product not found" });
         if (ratingArr.length === 0) return res.json({ information: "Cannot find any data" });
@@ -24,9 +33,10 @@ const PostRating = async (req, res) => {
         const averageStaring = totalStaring / ratingArr.length;
 
         await product.findOneAndUpdate({ id }, { ratings: averageStaring }, { new: true });
-        res.json(ratingItem); //end
+
+        res.json({ success: true, averageRating: averageStaring });
     } catch (e) {
-        res.status(500).json({ errF: "something when wrong", err: e.message });
+        res.status(500).json({ errF: "something went wrong", err: e.message });
     }
 };
 

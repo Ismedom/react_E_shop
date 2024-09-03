@@ -6,8 +6,9 @@ function generateRandomString(length) {
     const charactersLength = characters.length;
 
     for (let i = 0; i < length; i++) {
-        result += characters.charAt(Math.floor(Math.random() * charactersLength)).toString() + Date.now().toString();
+        result += characters.charAt(Math.floor(Math.random() * charactersLength)).toString();
     }
+    result += Date.now().toString();
 
     return result;
 }

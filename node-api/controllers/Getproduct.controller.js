@@ -2,12 +2,14 @@ const Product = require("../models/product");
 const admin = require("firebase-admin");
 
 const getProducts = async (req, res) => {
-    // const page = parseInt(req.query.page) || 1;
-    const limit = parseInt(req.query.limit) || 10;
+    const itemPerPage = parseInt(req.query.itemPerPage) || 10;
+    const currentPage = parseInt(req.query.currentPage) || 1;
 
     try {
         const bucket = admin.storage().bucket();
-        const items = await Product.find().limit(limit);
+        const items = await Product.find()
+            .skip((currentPage - 1) * itemPerPage)
+            .limit(itemPerPage);
 
         const productWithImages = await Promise.all(
             items.map(async (item) => {
