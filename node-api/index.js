@@ -16,7 +16,13 @@ const SearchingRouter = require("./routes/GetproductSearch.route");
 const DeleteProductRouter = require("./routes/DeleteProduct.route");
 require("./utils/firebaseConfig");
 
-app.use(cors());
+app.use(
+    cors({
+        origin: "*",
+        methods: ["GET", "POST", "DELETE", "UPDATE", "PUT", "PATCH"],
+        allowedHeaders: ["Content-Type", "Authorization", "X-Requested-With", "Accept", "Origin"],
+    })
+);
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
