@@ -1,6 +1,6 @@
 const Router = require("express").Router();
 
-const paths = ["/", "/greeting"];
+const paths = ["/", "/greeting", "hello"];
 paths.forEach((path) => {
     Router.get(path, (req, res) => {
         res.send(`
