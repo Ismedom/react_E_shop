@@ -12,7 +12,9 @@ const productSearchByDes = async (req, res) => {
         })
         .skip((currentPage - 1) * itemPerPage)
         .limit(itemPerPage);
-    return res.json(productFoundByDes);
+    return res.json({
+        products: productFoundByDes,
+    });
 };
 
 const productSearchById = async (req, res) => {
@@ -24,7 +26,10 @@ const productSearchById = async (req, res) => {
         .findOne({ id })
         .skip((currentPage - 1) * itemPerPage)
         .limit(itemPerPage);
-    return res.json(productFoundById);
+
+    return res.json({
+        products: productFoundById,
+    });
 };
 
 const productSearchByType = async (req, res) => {
@@ -38,7 +43,10 @@ const productSearchByType = async (req, res) => {
         })
         .skip((currentPage - 1) * itemPerPage)
         .limit(itemPerPage);
-    return res.json(productFoundByType);
+
+    return res.json({
+        products: productFoundByType,
+    });
 };
 
 const productSearchByName = async (req, res) => {
@@ -52,7 +60,10 @@ const productSearchByName = async (req, res) => {
         })
         .skip((currentPage - 1) * itemPerPage)
         .limit(itemPerPage);
-    return res.json(productFoundByName);
+
+    return res.json({
+        products: productFoundByName,
+    });
 };
 
 const productSearchByEQPrice = async (req, res) => {
@@ -66,7 +77,10 @@ const productSearchByEQPrice = async (req, res) => {
         })
         .skip((currentPage - 1) * itemPerPage)
         .limit(itemPerPage);
-    return res.json(productFoundByEQPrice);
+
+    return res.json({
+        products: productFoundByEQPrice,
+    });
 };
 
 const productSearchByPrice = async (req, res) => {
@@ -81,7 +95,9 @@ const productSearchByPrice = async (req, res) => {
         })
         .skip((currentPage - 1) * itemPerPage)
         .limit(itemPerPage);
-    return res.json(productFoundbyPrice);
+    return res.json({
+        products: productFoundbyPrice,
+    });
 };
 
 module.exports = {
