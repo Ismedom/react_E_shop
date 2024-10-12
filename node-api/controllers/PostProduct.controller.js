@@ -3,14 +3,21 @@ const { v4: uuidv4 } = require("uuid");
 const path = require("path");
 const { bucket } = require("../utils/firebaseConfig");
 const generateRandomString = require("../utils/generateId");
+const escape = require("escape-html");
 
 const postProduct = async (req, res) => {
     const { name, price, description, type, stock, ratings } = req.body;
 
+    const escapeName = escape(name);
+    const escapePrice = escape(price);
+    const escapeDescription = escape(description);
+    const escapeStock = escape(stock);
+    const escapeRating = escape(ratings);
+
     if (!name || !price || req.file.originalFileName)
         return res.json({ require: "name, price and other information!" });
 
-    const typeFomat = type.trim().toLowerCase();
+    const typeFomat = escape(type.trim().toLowerCase());
     const id = generateRandomString(10);
     const originalFileName = `${uuidv4()}${path.extname(req.file.originalname)}`;
 
@@ -38,13 +45,13 @@ const postProduct = async (req, res) => {
 
                 const item = new Product({
                     id,
-                    name,
-                    price,
-                    description,
+                    name: escapeName,
+                    price: escapePrice,
+                    description: escapeDescription,
                     type: typeFomat,
                     imageUrl: originalFileName,
-                    stock,
-                    ratings,
+                    stock: escapeStock,
+                    ratings: escapeRating,
                 });
 
                 await item.save();
