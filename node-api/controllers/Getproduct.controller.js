@@ -5,6 +5,12 @@ const getProducts = async (req, res) => {
     const itemPerPage = parseInt(req.query.itemPerPage) || 10;
     const currentPage = parseInt(req.query.currentPage) || 1;
 
+    if (isNaN(itemPerPage) || isNaN(currentPage)) {
+        return res.json({
+            message: "Accept number only",
+        });
+    }
+
     try {
         const bucket = admin.storage().bucket();
         const items = await Product.find()
@@ -13,7 +19,7 @@ const getProducts = async (req, res) => {
 
         const productWithImages = await Promise.all(
             items.map(async (item) => {
-                const [files] = await bucket.getFiles({ prefix: item.imageUrl });
+                const [files] = bucket.getFiles({ prefix: item.imageUrl });
 
                 if (files.length > 0) {
                     const [url] = await files[0].getSignedUrl({

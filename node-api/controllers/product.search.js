@@ -1,11 +1,15 @@
 //
 const product = require("../models/product");
+const escape = require("escape-html");
 
 const productSearchByDes = async (req, res) => {
-    const description = req.query.description.trim().toLowerCase();
+    const description = escape(req.query.description.trim().toLowerCase());
     const itemPerPage = parseInt(req.query.itemPerPage) || 10;
     const currentPage = parseInt(req.query.currentPage) || 1;
 
+    if (isNaN(currentPage) || isNaN(itemPerPage)) {
+        return res.json({ message: "Accept number only" });
+    }
     const productFoundByDes = await product
         .find({
             description: { $regex: description, $options: "i" },

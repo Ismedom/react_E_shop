@@ -2,9 +2,10 @@
 const product = require("../models/product");
 const rating = require("../models/rating");
 const admin = require("firebase-admin");
+const escape = require("escape-html");
 
 const productDetails = async (req, res) => {
-    const id = req.params.id;
+    const id = escape(req.params.id);
     try {
         const ratingArr = await rating.find({ id });
         const productInfor = await product.findOne({ id });
