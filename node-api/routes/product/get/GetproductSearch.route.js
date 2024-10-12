@@ -1,6 +1,6 @@
 //
 const express = require("express");
-const authenticateApiKey = require("../middleware/authenticateApiKey");
+const authenticateApiKey = require("../../../middleware/authenticateApiKey");
 const {
     productSearchByDes,
     productSearchByType,
@@ -8,7 +8,7 @@ const {
     productSearchById,
     productSearchByName,
     productSearchByEQPrice,
-} = require("../controllers/product.search");
+} = require("../../../controllers/product/get/product.search");
 const Router = express.Router();
 
 Router.get("/search/description", authenticateApiKey, productSearchByDes);

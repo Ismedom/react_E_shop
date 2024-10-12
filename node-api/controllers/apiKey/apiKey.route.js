@@ -1,6 +1,6 @@
 //
-const ApiKey = require("../models/apiKey");
-const generateApiKey_ = require("../utils/generateApiKey");
+const ApiKey = require("../../models/apiKey");
+const generateApiKey_ = require("../../utils/generateApiKey");
 
 const generateApiKey = async (req, res) => {
     const newApiKey = new ApiKey({
