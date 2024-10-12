@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>E-Shop API Documentation</title>
+        <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+        <style>
+            .code-editor {
+                background-color: #2d2d2d;
+                color: #f8f8f2;
+                padding: 10px;
+                border-radius: 5px;
+                overflow-x: auto;
+                font-family: "Courier New", Courier, monospace;
+                line-height: 1.5;
+            }
+        </style>
+    </head>
+    <body class="bg-gray-100 text-gray-800">
+        <div class="container mx-auto p-6">
+            <h1 class="text-3xl font-bold mb-6">E-Shop API Documentation</h1>
+
+            <div class="bg-white shadow-md rounded-lg p-4 mb-6">
+                <h2 class="text-2xl font-semibold">1. Generate API Key</h2>
+                <p>To use the API, you need to generate an API key. No sign-up is required.</p>
+
+                <h3 class="font-semibold">Request</h3>
+                <pre class="code-editor mb-4"><code>POST /generate-api-key</code></pre>
+
+                <h3 class="font-semibold">Example Request</h3>
+                <pre class="code-editor mb-4"><code>
+fetch("https://react-e-shop-silk.vercel.app/generate-api-key", {
+    method: "POST"
+})
+.then(response => response.json())
+.then(data => console.log(data))
+.catch(error => console.error("Error:", error));
+        </code></pre>
+
+                <h3 class="font-semibold">Example Response</h3>
+                <pre class="code-editor mb-4"><code>
+{
+    "apiKey": "exampleb7dd5afd3a0b557c904fc2ecc3ayy234d8b3e660bab1a736030d8b54"
+}
+        </code></pre>
+            </div>
+
+            <div class="bg-white shadow-md rounded-lg p-4 mb-6">
+                <h2 class="text-2xl font-semibold">2. Get Products</h2>
+                <h3 class="font-semibold">Request</h3>
+                <pre class="code-editor mb-4"><code>GET /products?currentPage=2&itemPerPage=20</code></pre>
+
+                <h3 class="font-semibold">Query Parameters</h3>
+                <ul class="list-disc list-inside mb-4">
+                    <li><strong>currentPage:</strong> number (The page you want, default = 1)</li>
+                    <li><strong>itemPerPage:</strong> number (Number of products per page, default = 10)</li>
+                </ul>
+
+                <h3 class="font-semibold">Example Response</h3>
+                <pre class="code-editor mb-4"><code>
+{
+    "products": [
+        {
+            "id": 232,
+            "name": "Wireless Headphones",
+            "price": 99.99,
+            "description": "High-quality wireless headphones with noise-cancellation and long battery life.",
+            "type": "electronics",
+            "imageUrl": "https://example.com/images/wireless-headphones.jpg"
+        },
+        {
+            "id": 233,
+            "name": "Bluetooth Speaker",
+            "price": 49.99,
+            "description": "Portable Bluetooth speaker with excellent sound quality and battery life.",
+            "type": "electronics",
+            "imageUrl": "https://example.com/images/bluetooth-speaker.jpg"
+        },
+        {
+            "id": 234,
+            "name": "Smartwatch",
+            "price": 199.99,
+            "description": "Feature-packed smartwatch with fitness tracking, heart rate monitoring, and notifications.",
+            "type": "electronics",
+            "imageUrl": "https://example.com/images/smartwatch.jpg"
+        }
+        ...
+    ]
+}
+        </code></pre>
+            </div>
+
+            <div class="bg-white shadow-md rounded-lg p-4 mb-6">
+                <h2 class="text-2xl font-semibold">3. Search Products</h2>
+                <h3 class="font-semibold">Search by Description</h3>
+                <pre
+                    class="code-editor mb-4"><code>GET /products/search/description?description=value&currentPage=2&itemPerPage=20</code></pre>
+
+                <h3 class="font-semibold">Query Parameters</h3>
+                <ul class="list-disc list-inside mb-4">
+                    <li><strong>description:</strong> string (Keyword for searching)</li>
+                    <li><strong>currentPage:</strong> number</li>
+                    <li><strong>itemPerPage:</strong> number</li>
+                </ul>
+
+                <h3 class="font-semibold">Example Response</h3>
+                <pre class="code-editor mb-4"><code>
+                {
+                    "products": [
+                        {
+                            "id": 234,
+                            "name": "Smartwatch",
+                            "price": 199.99,
+                            "description": "Feature-packed smartwatch with fitness tracking, heart rate monitoring, and notifications.",
+                            "type": "electronics",
+                            "imageUrl": "https://example.com/images/smartwatch.jpg"
+                        }
+                        ...
+                    ]
+                }
+        </code></pre>
+
+                <h3 class="font-semibold">Search by Other Fields</h3>
+                <ul class="list-disc list-inside mb-4">
+                    <li><code>GET /products/search/type?type=value&currentPage=2&itemPerPage=20</code></li>
+                    <li><code>GET /products/search/name?name=value&currentPage=2&itemPerPage=20</code></li>
+                    <li><code>GET /products/search/price?price=value&currentPage=2&itemPerPage=20</code></li>
+                    <li>
+                        <code
+                            >GET
+                            /products/search/eqPrice?minPrice=value1&maxPrice=value2&currentPage=2&itemPerPage=20</code
+                        >
+                    </li>
+                    <li><code>GET /products/search/id?id=value&currentPage=2&itemPerPage=20</code></li>
+                </ul>
+
+                <h3 class="font-semibold">Query Parameters</h3>
+                <ul class="list-disc list-inside mb-4">
+                    <li><strong>type, name:</strong> string (Filter for product type)</li>
+                    <li><strong>minPrice, maxPrice, price:</strong> number</li>
+                    <li><strong>currentPage:</strong> number</li>
+                    <li><strong>itemPerPage:</strong> number</li>
+                </ul>
+            </div>
+
+            <div class="bg-white shadow-md rounded-lg p-4 mb-6">
+                <h2 class="text-2xl font-semibold">4. Get Product Details</h2>
+                <h3 class="font-semibold">Request</h3>
+                <pre class="code-editor mb-4"><code>GET /product-details/:id</code></pre>
+
+                <h3 class="font-semibold">Path Parameter</h3>
+                <ul class="list-disc list-inside mb-4">
+                    <li><strong>id:</strong> number (The ID of the product)</li>
+                </ul>
+
+                <h3 class="font-semibold">Example Response</h3>
+                <pre class="code-editor mb-4"><code>
+[{
+    "id": 235,
+    "name": "4K Ultra HD Smart TV",
+    "price": 499.99,
+    "description": "Experience stunning visuals with this 55-inch 4K Ultra HD Smart TV, featuring HDR support and voice control.",
+    "type": "electronics",
+    "imageUrl": "https://example.com/images/4k-smart-tv.jpg",
+    "stock": 50,
+    "ratings": 4.7
+}]
+        </code></pre>
+            </div>
+
+            <div class="bg-white shadow-md rounded-lg p-4 mb-6">
+                <h2 class="text-2xl font-semibold">5. Post Product</h2>
+                <h3 class="font-semibold">Request</h3>
+                <pre class="code-editor mb-4"><code>POST /post-product</code></pre>
+
+                <h3 class="font-semibold">Required Parameters</h3>
+                <ul class="list-disc list-inside mb-4">
+                    <li><strong>name:</strong> product's name (type: string)</li>
+                    <li><strong>price:</strong> (type: number)</li>
+                    <li><strong>description:</strong> about product (type: string)</li>
+                    <li><strong>type:</strong> (type: string)</li>
+                </ul>
+            </div>
+
+            <div class="bg-white shadow-md rounded-lg p-4 mb-6">
+                <h2 class="text-2xl font-semibold">6. Rate Products</h2>
+                <h3 class="font-semibold">Request</h3>
+                <pre class="code-editor mb-4"><code>POST /rating</code></pre>
+
+                <h3 class="font-semibold">Required Parameters</h3>
+                <ul class="list-disc list-inside mb-4">
+                    <li><strong>id:</strong> product's id (type: string)</li>
+                    <li><strong>userId:</strong> (type: string)</li>
+                    <li><strong>rating:</strong> (type: number), max value 5</li>
+                </ul>
+            </div>
+        </div>
+    </body>
+</html>

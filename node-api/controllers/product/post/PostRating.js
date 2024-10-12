@@ -1,5 +1,5 @@
-const product = require("../models/product");
-const ratings = require("../models/rating");
+const product = require("../../../models/product");
+const ratings = require("../../../models/rating");
 const escape = require("escape-html");
 
 const PostRating = async (req, res) => {

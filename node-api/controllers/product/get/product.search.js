@@ -1,5 +1,5 @@
 //
-const product = require("../models/product");
+const product = require("../../../models/product");
 const escape = require("escape-html");
 
 const productSearchByDes = async (req, res) => {

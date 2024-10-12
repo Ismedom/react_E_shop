@@ -1,8 +1,8 @@
-const Product = require("../models/product");
+const Product = require("../../../models/product");
 const { v4: uuidv4 } = require("uuid");
 const path = require("path");
-const { bucket } = require("../utils/firebaseConfig");
-const generateRandomString = require("../utils/generateId");
+const { bucket } = require("../../../utils/firebaseConfig");
+const generateRandomString = require("../../../utils/generateId");
 const escape = require("escape-html");
 
 const postProduct = async (req, res) => {

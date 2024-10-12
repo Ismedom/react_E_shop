@@ -1,6 +1,6 @@
 const express = require("express");
-const authenticateApiKey = require("../middleware/authenticateApiKey");
-const postProduct = require("../controllers/PostProduct.controller");
+const authenticateApiKey = require("../../../middleware/authenticateApiKey");
+const postProduct = require("../../../controllers/product/post/PostProduct.controller");
 const multer = require("multer");
 
 const upload = multer({

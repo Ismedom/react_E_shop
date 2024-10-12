@@ -1,6 +1,6 @@
 //
-const product = require("../models/product");
-const rating = require("../models/rating");
+const product = require("../../../models/product");
+const rating = require("../../../models/rating");
 const admin = require("firebase-admin");
 const escape = require("escape-html");
 

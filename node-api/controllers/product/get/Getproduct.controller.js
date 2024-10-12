@@ -1,4 +1,4 @@
-const Product = require("../models/product");
+const Product = require("../../../models/product");
 const admin = require("firebase-admin");
 
 const getProducts = async (req, res) => {
