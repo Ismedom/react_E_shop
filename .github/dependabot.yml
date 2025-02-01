@@ -8,4 +8,4 @@ updates:
   - package-ecosystem: "npm"
     directory: "/react_E_shop"
     schedule:
-      interval: "daily"
+      interval: "monthly"
