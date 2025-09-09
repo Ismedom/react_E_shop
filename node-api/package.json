@@ -20,7 +20,7 @@
     "mongoose": "^8.5.2",
     "multer": "^2.0.1",
     "path": "^0.12.7",
-    "uuid": "^11.0.3"
+    "uuid": "^13.0.0"
   },
   "devDependencies": {
     "dotenv": "^17.2.2",
